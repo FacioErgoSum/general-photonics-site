@@ -1,0 +1,383 @@
+<html><head><base href="https://generalphotonics.org"><title>General Photonics - Open-Source fNIRS Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #F05454;
+    --green: #5EBD6E;
+    --blue: #3BABE1;
+    --text-color: #2F2F2F;
+    --background-color: #E5E5E5; /* Changed to a slightly darker gray */
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: var(--text-color);
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5em;
+    margin-right: 15px;
+    animation: colorChange 6s infinite;
+  }
+
+  @keyframes colorChange {
+    0%, 100% { color: var(--red); }
+    33% { color: var(--green); }
+    66% { color: var(--blue); }
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  nav ul li {
+    margin-left: 20px;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li:nth-child(3n+1) a:hover { color: var(--red); }
+  nav ul li:nth-child(3n+2) a:hover { color: var(--green); }
+  nav ul li:nth-child(3n+3) a:hover { color: var(--blue); }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  section {
+    background-color: white;
+    padding: 30px;
+    margin: 30px 0;
+    border: 3px solid var(--text-color);
+    box-shadow: 8px 8px 0 var(--text-color);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  section:hover {
+    transform: translate(-5px, -5px);
+  }
+
+  h2 {
+    font-size: 2.5em;
+    margin-top: 0;
+    border-bottom: 5px solid;
+    padding-bottom: 10px;
+  }
+
+  #about h2 { color: var(--red); border-color: var(--red); }
+  #technology h2 { color: var(--green); border-color: var(--green); }
+  #research h2 { color: var(--blue); border-color: var(--blue); }
+  #contact h2 { color: var(--red); border-color: var(--red); }
+
+  .cta-button {
+    background-color: var(--blue);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border: 3px solid var(--text-color);
+    box-shadow: 5px 5px 0 var(--text-color);
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+
+  .cta-button:hover {
+    background-color: var(--green);
+    box-shadow: 2px 2px 0 var(--text-color);
+    transform: translate(3px, 3px);
+  }
+
+  footer {
+    background-color: var(--text-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  .hidden-message {
+    color: transparent;
+    font-size: 1px;
+  }
+
+  @keyframes rgbPulse {
+    0%, 100% { background-color: var(--red); }
+    33% { background-color: var(--green); }
+    66% { background-color: var(--blue); }
+  }
+
+  .rgb-accent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    z-index: 1001;
+    animation: rgbPulse 6s infinite;
+  }
+
+  ul li::before {
+    content: '•';
+    color: var(--red);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+
+  ul li:nth-child(3n+2)::before { color: var(--green); }
+  ul li:nth-child(3n+3)::before { color: var(--blue); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .team-member {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .team-member:hover {
+    transform: translateY(-5px);
+  }
+
+  .team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid var(--blue);
+  }
+
+  .team-member h3 {
+    margin: 10px 0 5px;
+    color: var(--text-color);
+  }
+
+  .team-member p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+  }
+
+  #news {
+    background-color: var(--blue);
+    color: white;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+  }
+
+  #news h2 {
+    color: white;
+    border-color: white;
+  }
+
+  .news-item {
+    background-color: rgba(255,255,255,0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+  .news-item h3 {
+    margin-top: 0;
+    color: white;
+  }
+
+  .news-item p {
+    margin-bottom: 0;
+  }
+
+  .news-item a {
+    color: var(--red);
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .news-item a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div class="rgb-accent"></div>
+
+<header>
+  <div class="logo-container">
+    <div class="logo">&#10038;</div>
+    <h1>General Photonics</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#technology">Our Technology</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="about">
+    <h2>About General Photonics</h2>
+    <p>General Photonics is at the forefront of developing cutting-edge, open-source functional Near-Infrared Spectroscopy (fNIRS) technology. Our mission is to revolutionize the fields of neuroscience and medical imaging by creating accessible, high-quality tools for researchers and clinicians worldwide.</p>
+    <p>Founded in 2018 by a team of passionate neuroscientists and engineers, we believe in the power of open collaboration to drive innovation in brain imaging technology.</p>
+  </section>
+
+  <section id="technology">
+    <h2>Our Technology</h2>
+    <p>Our flagship product is the Delphi CW-DOT fNIRS Module, an advanced continuous-wave diffuse optical tomography system that offers unprecedented resolution and accuracy in measuring brain activity. Key features include:</p>
+    <ul>
+      <li>High-density optode arrays with 256 channels for improved spatial resolution</li>
+      <li>Dual-wavelength light sources (735 nm and 850 nm) for optimal hemoglobin measurement</li>
+      <li>Advanced signal processing algorithms for noise reduction and motion artifact correction</li>
+      <li>Real-time 3D image reconstruction capabilities</li>
+      <li>User-friendly software interface for data analysis and visualization</li>
+      <li>Modular design for easy customization and upgradeability</li>
+    </ul>
+    <p>As an open-source initiative, we believe in the power of collaboration to drive innovation. Our hardware schematics and software are freely available to the scientific community, enabling researchers to adapt and improve upon our technology.</p>
+    <a href="https://generalphotonics.org/delphi-cwdot-fnirs-module-whitepaper" class="cta-button">Read Our Whitepaper</a>
+  </section>
+
+  <section id="research">
+    <h2>Current Research Applications</h2>
+    <p>Our fNIRS technology is currently being used in a wide range of research areas, including:</p>
+    <ul>
+      <li>Cognitive neuroscience studies</li>
+      <li>Brain-computer interface development</li>
+      <li>Neurological disorder diagnosis and monitoring</li>
+      <li>Neurorehabilitation</li>
+      <li>Developmental neuroscience</li>
+      <li>Social cognitive neuroscience</li>
+    </ul>
+    <p>We are constantly exploring new applications and pushing the boundaries of what's possible with fNIRS technology.</p>
+  </section>
+
+  <section id="team">
+    <h2>Our Team</h2>
+    <p>At General Photonics, we're proud of our diverse and talented team of researchers, engineers, and innovators.</p>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="geoff-mcintyre.jpg" alt="Dr. Geoff McIntyre" width="150" height="150">
+        <h3>Dr. Geoff McIntyre</h3>
+        <p>Chief Technology Officer</p>
+        <a href="https://generalphotonics.org/geoff-mcintyre">Profile</a>
+      </div>
+      <div class="team-member">
+        <img src="lisa-chen.jpg" alt="Dr. Lisa Chen" width="150" height="150">
+        <h3>Dr. Lisa Chen</h3>
+        <p>Lead Neuroscientist</p>
+        <a href="https://generalphotonics.org/lisa-chen">Profile</a>
+      </div>
+      <div class="team-member">
+        <img src="amir-khan.jpg" alt="Dr. Amir Khan" width="150" height="150">
+        <h3>Dr. Amir Khan</h3>
+        <p>Software Engineering Lead</p>
+        <a href="https://generalphotonics.org/amir-khan">Profile</a>
+      </div>
+      <div class="team-member">
+        <img src="sarah-johnson.jpg" alt="Dr. Sarah Johnson" width="150" height="150">
+        <h3>Dr. Sarah Johnson</h3>
+        <p>Clinical Applications Director</p>
+        <a href="https://generalphotonics.org/sarah-johnson">Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <h2>Latest News</h2>
+    <div class="news-item">
+      <h3>General Photonics Announces Collaboration with NeuroTech Institute</h3>
+      <p>We're excited to announce our new partnership with the NeuroTech Institute to develop next-generation brain-computer interfaces using our Delphi CW-DOT fNIRS technology. <a href="https://generalphotonics.org/news/neurotech-collaboration">Read more</a></p>
+    </div>
+    <div class="news-item">
+      <h3>Open-Source fNIRS Workshop - Registration Now Open</h3>
+      <p>Join us for a two-day virtual workshop on open-source fNIRS development. Learn from experts and contribute to the future of neuroimaging. <a href="https://generalphotonics.org/events/fnirs-workshop-2023">Register now</a></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get Involved</h2>
+    <p>Whether you're a researcher, clinician, or developer, we welcome your participation in our open-source community. Join us in shaping the future of neuroscience and medical imaging!</p>
+    <a href="https://generalphotonics.org/community" class="cta-button">Join Our Community</a>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2023 General Photonics. All rights reserved.</p>
+  <p class="hidden-message">Project Neuro-Dive: Bridging minds and machines. The future is closer than you think.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  const hiddenMessage = document.querySelector('.hidden-message');
+  
+  // Secret interaction for those who know where to look
+  let secretCode = '';
+  const konamiCode = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba';
+  
+  document.addEventListener('keydown', (e) => {
+    secretCode += e.key;
+    if (secretCode.includes(konamiCode)) {
+      hiddenMessage.style.color = '#F05454';
+      hiddenMessage.style.fontSize = '14px';
+      hiddenMessage.textContent = "Welcome, Neuro-Dive insider. The future of full immersion awaits.";
+      
+      // Add a playful RGB effect to the entire page
+      document.body.style.animation = 'rgbPulse 6s infinite';
+    }
+  });
+});
+</script>
+
+</body></html>
